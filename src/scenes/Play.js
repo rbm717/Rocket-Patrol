@@ -148,58 +148,48 @@ class Play extends Phaser.Scene {
             this.ship03.update();
             this.ship04.update();
         }
-        //this.input.on('pointerdown', this.p2Rocket.onRocketClick());
+        // Fires 2nd player's rocket when mouse is clicked
         if(this.p2Rocket.isFiring == false){
             this.input.on('pointerdown',() => {this.p2Rocket.onRocketClick()});
         }
         // check collisions for player 1
         if (this.checkCollision(this.p1Rocket, this.ship04)) {
-            console.log('kaboom ship 01');
             this.p1Rocket.reset();
             this.p1Score += this.ship04.getPoints();
             this.shipExplode(this.ship04);
         }
         if(this.checkCollision(this.p1Rocket, this.ship03)) {
-            console.log('kaboom ship 03');
             this.p1Rocket.reset();
             this.p1Score += this.ship03.getPoints();
             this.shipExplode(this.ship03);
-            console.log(this.ship03.getPoints());
-            console.log('hehehe');
         }
         if (this.checkCollision(this.p1Rocket, this.ship02)) {
-            console.log('kaboom ship 02');
             this.p1Rocket.reset();
             this.p1Score += this.ship02.getPoints();
             this.shipExplode(this.ship02);
         }
         if (this.checkCollision(this.p1Rocket, this.ship01)) {
-            console.log('kaboom ship 01');
             this.p1Rocket.reset();
             this.p1Score += this.ship01.getPoints();
             this.shipExplode(this.ship01);
         }
         // check collisions for player 2
         if (this.checkCollision(this.p2Rocket, this.ship04)) {
-            console.log('kaboom ship 01');
             this.p2Rocket.reset();
             this.p2Score += this.ship04.getPoints();
             this.shipExplode(this.ship04);
         }
         if(this.checkCollision(this.p2Rocket, this.ship03)) {
-            console.log('kaboom ship 03');
             this.p2Rocket.reset();
             this.p2Score += this.ship03.getPoints();
             this.shipExplode(this.ship03);
         }
         if (this.checkCollision(this.p2Rocket, this.ship02)) {
-            console.log('kaboom ship 02');
             this.p2Rocket.reset();
             this.p2Score += this.ship02.getPoints();
             this.shipExplode(this.ship02);
         }
         if (this.checkCollision(this.p2Rocket, this.ship01)) {
-            console.log('kaboom ship 01');
             this.p2Rocket.reset();
             this.p2Score += this.ship01.getPoints();
             this.shipExplode(this.ship01);

@@ -22,12 +22,6 @@ class Rocket_P2 extends Phaser.GameObjects.Sprite {
                 this.x += this.moveSpeed;
             }
         }
-        //fire button
-        /*if(Phaser.Input.Keyboard.JustDown(keyW) && !this.isFiring){
-            this.isFiring = true;
-            this.sfxRocket.play();  // play sfx
-        }
-            */
         //if fired, move up
         if(this.isFiring && this.y >= borderUISize * 3 + borderPadding){
             this.y -= this.moveSpeed;
@@ -52,6 +46,7 @@ class Rocket_P2 extends Phaser.GameObjects.Sprite {
         this.y = game.config.height - borderUISize - borderPadding;
     }
 
+    // Plays sound when rocket fired
     onRocketClick(){
         if(this.isFiring == false){
             this.isFiring = true;
