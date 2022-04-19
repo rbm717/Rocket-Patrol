@@ -1,5 +1,5 @@
 // Rocket prefab
-class Rocket extends Phaser.GameObjects.Sprite {
+class Rocket_P2 extends Phaser.GameObjects.Sprite {
     constructor(scene, x, y, texture, frame) {
       super(scene, x, y, texture, frame);
   
@@ -14,23 +14,28 @@ class Rocket extends Phaser.GameObjects.Sprite {
     update(){
         //left and right movement
         if(!this.isFiring){
-            if(keyLEFT.isDown && this.x >= borderUISize + this.width){
+            if(this.x > game.input.mousePointer.x && this.x >= borderUISize + this.width){
+            //if(keyA.isDown && this.x >= borderUISize + this.width){
                 this.x -= this.moveSpeed;
-            }else if(keyRIGHT.isDown && this.x <= game.config.width - borderUISize){
+            //}else if(keyD.isDown && this.x <= game.config.width - borderUISize){
+            }else if(this.x < game.input.mousePointer.x && this.x >= borderUISize + this.width){
                 this.x += this.moveSpeed;
             }
         }
         //fire button
-        if(Phaser.Input.Keyboard.JustDown(keyUP) && !this.isFiring){
+        /*if(Phaser.Input.Keyboard.JustDown(keyW) && !this.isFiring){
             this.isFiring = true;
             this.sfxRocket.play();  // play sfx
         }
+            */
         //if fired, move up
         if(this.isFiring && this.y >= borderUISize * 3 + borderPadding){
             this.y -= this.moveSpeed;
-            if(keyLEFT.isDown && this.x >= borderUISize + this.width){
+            //if(keyA.isDown && this.x >= borderUISize + this.width){
+            if(this.x > game.input.mousePointer.x && this.x >= borderUISize + this.width){
                 this.x -= this.moveSpeed;
-            }else if(keyRIGHT.isDown && this.x <= game.config.width - borderUISize){
+            //}else if(keyD.isDown && this.x <= game.config.width - borderUISize){
+            }else if(this.x < game.input.mousePointer.x && this.x <= game.config.width - borderUISize){
                 this.x += this.moveSpeed;
             }
         }
@@ -45,5 +50,12 @@ class Rocket extends Phaser.GameObjects.Sprite {
     reset(){
         this.isFiring = false;
         this.y = game.config.height - borderUISize - borderPadding;
+    }
+
+    onRocketClick(){
+        if(this.isFiring == false){
+            this.isFiring = true;
+            this.sfxRocket.play();  // play sfx
+        }
     }
 }
